@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestController;
+use App\Http\Middleware\ShowBefore;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,5 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return 'Hello World';
 });
+
+Route::get('/mytest/', [TestController::class, 'index'])->middleware(ShowBefore::class, \App\Http\Middleware\ShowAfter::class);
